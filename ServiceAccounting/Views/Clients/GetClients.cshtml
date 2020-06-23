@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ServiceAccounting.Models.Client>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.ClientCity</td>
+        <td>@item.ClientName</td>
+        <td>@item.ClientCity</td>
+        <td>@item.ClientNumberPhone</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClientId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClientId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClientId })
+        </td>
+    </tr>
+}

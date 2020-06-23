@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ServiceAccounting.Models.Order>
+
+@{
+    ViewBag.Title = "Orders";
+    AjaxOptions search = new AjaxOptions
+    {
+        UpdateTargetId = "searchResult",
+        Url = Url.Action("SearchResult")
+    };
+}
+
+<h2>Orders</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Ajax.BeginForm(search))
+{
+<p>
+    <input type="text" placeholder="Client Name" name="clientName" value="@ViewBag.clientName" />
+    <input type="text" placeholder="Worker Name" name="workerName" value="@ViewBag.workerName" />
+    <input type="text" placeholder="Service Type" name="serviceType" value="@ViewBag.serviceType" />
+
+    <button type="submit" class="btn btn-success">Search</button>
+</p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.client.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service.ServiceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.worker.WorkerName)
+            </th>
+            <th></th>
+        </tr>
+        <tbody id="searchResult">
+            @Html.Action("SearchResult")
+        </tbody>
+    </table>
+}

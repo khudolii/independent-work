@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ServiceAccounting.Models.Worker>
+
+@{
+    ViewBag.Title = "Workers";
+    AjaxOptions search = new AjaxOptions
+    {
+        UpdateTargetId = "searchResult",
+        Url = Url.Action("SearchResult")
+    };
+}
+
+<h2>Workers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Ajax.BeginForm(search))
+{
+    <p>
+        <input type="text" placeholder="Name"  name="clientName" value="@ViewBag.workerName" />
+        <button type="submit" class="btn btn-success">Search</button>
+    </p>
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkerExpirience)
+            </th>
+            <th></th>
+        </tr>
+        <tbody id="searchResult">
+            @Html.Action("SearchResult")
+        </tbody>
+    </table>
+}

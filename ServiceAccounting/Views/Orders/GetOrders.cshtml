@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ServiceAccounting.Models.Order>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.OrderId</td>
+        <td>@item.worker.WorkerName</td>
+        <td>@item.client.ClientName</td>
+        <td>@item.service.ServiceType</td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+        </td>
+    </tr>
+}
+
